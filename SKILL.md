@@ -1,8 +1,8 @@
 ---
 name: study
-description: 사용자의 학습진도를 확인(없으면 진단 후 생성)하고, 건네받은 공부 자료(PDF·텍스트·웹페이지·유튜브·긴 교재)를 분석해 현재 수준에 맞는 학습 순서를 추천한다. `/study done` 으로 설명해보기+퀴즈를 거쳐 진도를 갱신하고, `/study review` 로 복습한다. /study 로만 실행.
+description: 사용자의 학습진도를 확인(없으면 진단 후 생성)하고, 건네받은 공부 자료(PDF·텍스트·웹페이지·유튜브·긴 교재)를 분석해 현재 수준에 맞는 학습 순서를 추천한다. 과제 링크(codemit)를 주면 Chrome 으로 읽고 IntelliJ 에 완성 코드 프로젝트를 만든 뒤 학습 계획을 세운다. `/study done` 으로 설명해보기+퀴즈를 거쳐 진도를 갱신하고, `/study review` 로 복습한다. /study 로만 실행.
 disable-model-invocation: true
-argument-hint: "[자료 경로 | URL | 유튜브 링크 | done | review]"
+argument-hint: "[자료 경로 | URL | 유튜브 링크 | 과제 링크 | done | review]"
 ---
 
 # /study — 수준 맞춤 학습 순서 추천 + 진도 관리
@@ -17,6 +17,7 @@ argument-hint: "[자료 경로 | URL | 유튜브 링크 | done | review]"
 
 - `$ARGUMENTS` 가 `done` 으로 시작 → **B. 진도 갱신**
 - `$ARGUMENTS` 가 `review` 로 시작 → **C. 복습**
+- `$ARGUMENTS` 에 과제 링크(`classroom.codemit.kr/.../problems/<번호>`)가 있으면 → **D. 과제 링크** — [assignment.md](assignment.md) 를 Read 하고 그대로 수행 (링크 뒤 "크롬으로 열고 확인해" 같은 말은 무시해도 됨)
 - 그 외 → **A. 학습 순서 추천**
 - 어느 흐름이든 사용자가 "사실 이거 잘 몰라"라고 하면 **직접 정정**(규칙 §3)을 즉시 적용한다.
 - 어느 흐름이든 **끝날 때**(A4 에서 자료를 요청하며 턴을 끝낼 때 포함) 맨 아래 **[진도 저장]** 을 수행한다.
