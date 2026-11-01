@@ -3,7 +3,14 @@
 - 재진단 보류: 없음
 
 ## 진행 중 계획
-- 없음 (최근 완주: TDD 다항식 계산기 ①, 2026-11-01)
+- 자료: TDD 다항식 계산기 ② — 완성본 Calc 읽기 + 남은 TDD 개념 (C:/Users/sgosp/IdeaProjects/Tdd, 실습: C:/Users/sgosp/IdeaProjects/TddPractice)
+- 진행: 0/6단계
+1. [ ] Calc 5~9줄 — trim·Math.max (lastIndexOf 둘 중 큰 쪽) — 확인 위주
+2. [ ] Calc 재귀 추적 ("10 * -10", "10 - 20 + 30") — 기저 사례(23줄) 집중
+3. [ ] 테스트 실패 메시지 읽기 — TddPractice Calc 로 t9 실패시켜 보기 — 실습
+4. [ ] TDD 사이클 + Fake it — 리팩토링 중 깨지면 되돌리기 — 집중
+5. [ ] 의미 있는 테스트 기준 — CalcTest t1~t14 가 각각 떨어뜨리는 잘못된 코드 찾기 — 집중
+6. [ ] TddPractice 에 t6~t14 추가해 재귀로 확장 — 실습 (핵심 10분 직접 짜기)
 
 ## 압축됨
 
