@@ -19,6 +19,7 @@ argument-hint: "[자료 경로 | URL | 유튜브 링크 | done | review]"
 - `$ARGUMENTS` 가 `review` 로 시작 → **C. 복습**
 - 그 외 → **A. 학습 순서 추천**
 - 어느 흐름이든 사용자가 "사실 이거 잘 몰라"라고 하면 **직접 정정**(규칙 §3)을 즉시 적용한다.
+- 어느 흐름이든 **끝날 때**(A4 에서 자료를 요청하며 턴을 끝낼 때 포함) 맨 아래 **[진도 저장]** 을 수행한다.
 
 ---
 
@@ -225,3 +226,32 @@ topic 파일의 상태별 개념·표시·학습 패턴과 자료 구조를 비�
    - 남은 복습: n개
    - 다음 복습: <날짜>
    ```
+
+---
+
+# 진도 저장 (자동 커밋 + 푸시)
+
+저장소: `C:/Users/sgosp/.claude/skills/study/` (GitHub `smj0617/study`, 비공개). 사용자에게 묻지 않고 수행한다.
+
+1. 변경 확인 — `progress/` 에 변경이 없으면 조용히 건너뛴다:
+   ```bash
+   git -C C:/Users/sgosp/.claude/skills/study status --porcelain -- progress
+   ```
+2. **`progress/` 만** 스테이징하고 커밋한다 (스킬 파일 수정은 여기서 커밋하지 않음):
+   ```bash
+   git -C C:/Users/sgosp/.claude/skills/study add -- progress
+   git -C C:/Users/sgosp/.claude/skills/study commit -m "<메시지>"
+   ```
+   메시지 형식 (`<주제>`는 주제명):
+   - A 흐름: `study: <주제> 학습 계획 — <자료명>` (진단만 했으면 `study: <주제> 초기 진단 (수준 n/5)`)
+   - B 흐름: `done: <주제> — 익힘 n개, 학습 중 n개 (n/N단계)`
+   - C 흐름: `review: <주제> — n개 중 m개 통과`
+   - 압축·펼치기·수준 변경이 있었으면 메시지 끝에 `, 압축: <묶음>` 등을 덧붙인다.
+3. 푸시:
+   ```bash
+   git -C C:/Users/sgosp/.claude/skills/study push
+   ```
+   - 실패하고 원격이 앞서 있으면 `git pull --rebase` 후 한 번만 다시 푸시.
+   - 그래도 실패하거나 충돌이 나면 **강제 푸시하지 말고** 멈춘 뒤 사용자에게 오류를 그대로 알린다 (커밋은 로컬에 남아 있음).
+   - 네트워크 문제로 실패하면 "로컬에는 저장됨, 다음 저장 때 함께 푸시됨"이라고 한 줄로 알린다.
+4. 성공하면 요약 끝에 `💾 저장됨 (<커밋 해시 7자리>)` 한 줄만 붙인다.

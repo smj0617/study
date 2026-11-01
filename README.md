@@ -20,3 +20,7 @@
 ## 설치 위치
 
 `C:/Users/sgosp/.claude/skills/study/` — 이 폴더 자체가 저장소이며, Claude Code 가 여기서 스킬을 읽는다.
+
+## 자동 저장
+
+각 흐름(`/study`, `done`, `review`)이 끝나면 `progress/` 변경만 자동으로 커밋하고 푸시한다. 스킬 파일 수정은 직접 커밋한다.
