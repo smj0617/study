@@ -4,14 +4,15 @@
 - 2026-11-01 학습 방식 변경으로 개념·로그 초기화 (이전 기록: archive/java.md > 개념 전체 정정 (2026-11-01))
 
 ## 진행 중 계획
-- 자료: TDD 다항식 계산기 ② 우선순위·괄호 t15~t28 (https://classroom.codemit.kr/classes/6/problems/29/submit) — 코드: C:/Users/sgosp/IdeaProjects/p29-calc-priority — 마감 2026-11-03
-- 진행: 0/6단계
-1. [ ] t15~t17 우선순위 — 집중 (+/- 로 먼저 자르고 조각은 * 로 재귀)
-2. [ ] t18~t20 바깥 괄호 벗기기 — 집중 (재귀 기저 사례와 연결)
-3. [ ] t21~t24 괄호 안 연산자는 건너뛰고 자르기 (깊이 세기) — 핵심 10분 직접 짜기
-4. [ ] t25~t26 괄호 앞 음수 -(…) — 집중 (단항 - 와 빼기 구분)
-5. [ ] t27~t28 호출 추적으로 종합 확인 — 실습
-6. [ ] 제출 (zip 또는 GitHub) — 훑기
+- 자료: 명언 앱 ⑤ 통합 테스트 (12단계) (https://classroom.codemit.kr/classes/6/problems/30/submit) — 코드: C:/Users/sgosp/IdeaProjects/p30-wise-saying-test — 마감 2026-11-02 23:59
+- 진행: 0/7단계
+1. [ ] App 생성자 — 저장소를 new App 마다 새로 만드는 이유 (테스트마다 초기화) — 훑기 (나머지는 ④ wiseSaying3 와 같음)
+2. [ ] TestUtil + TestUtilTest t1~t2 — Scanner(String), System.setOut 으로 출력 가로채기·되돌리기 — 집중
+3. [ ] AppTestRunner.run — Consumer<Scanner>, try-with-resources + finally 로 출력 복구 — 집중
+4. [ ] WiseSayingControllerTest t1·t3·t4·t5 (종료·등록·목록) — contains / containsSubsequence — 실습
+5. [ ] t6~t9 (삭제·수정·없는 번호 삭제·수정) — doesNotContain 으로 "사라졌는지" 확인 — 실습
+6. [ ] 핵심 10분 직접 짜기: 수정·없는 번호 수정 테스트를 빈 메서드에서 직접 작성
+7. [ ] 제출 (zip 또는 GitHub) — 마감 11/2 (월) 23:59
 
 ## 압축됨
 
