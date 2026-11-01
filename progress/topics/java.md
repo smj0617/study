@@ -4,7 +4,7 @@
 - 2026-11-01 학습 방식 변경으로 개념·로그 초기화 (이전 기록: archive/java.md > 개념 전체 정정 (2026-11-01))
 
 ## 진행 중 계획
-- 자료: TDD 다항식 계산기 ② 우선순위·괄호 t15~t28 (https://classroom.codemit.kr/classes/6/problems/29/submit) — 마감 2026-11-03
+- 자료: TDD 다항식 계산기 ② 우선순위·괄호 t15~t28 (https://classroom.codemit.kr/classes/6/problems/29/submit) — 코드: C:/Users/sgosp/IdeaProjects/p29-calc-priority — 마감 2026-11-03
 - 진행: 0/6단계
 1. [ ] t15~t17 우선순위 — 집중 (+/- 로 먼저 자르고 조각은 * 로 재귀)
 2. [ ] t18~t20 바깥 괄호 벗기기 — 집중 (재귀 기저 사례와 연결)
