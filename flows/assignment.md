@@ -1,16 +1,20 @@
 # D. 과제 링크 → 완성 코드 프로젝트
 
-`/study <과제 링크>` 로 들어온 경우. 과제 페이지를 읽고 IntelliJ 에 새 프로젝트를 만들어 **완성 코드**를 넣은 뒤, A 흐름으로 이어서 그 코드를 읽는 학습 계획을 세운다. 사용자에게 묻지 않고 끝까지 자동으로 진행한다 (막힐 때만 묻는다).
+`/study <과제 링크>` 로 들어온 경우 (SKILL.md 분기). 과제 페이지를 읽고 IntelliJ 에 새 프로젝트를 만들어 **완성 코드**를 넣은 뒤, A 흐름([flows/plan.md](plan.md))으로 이어서 그 코드를 읽는 학습 계획을 세운다. 사용자에게 묻지 않고 끝까지 자동으로 진행한다 (막힐 때만 묻는다).
 
-## 경로·도구 (고정)
+## 경로·도구
+
+버전이 들어가는 경로(JDK·IntelliJ)는 업데이트되면 바뀌므로, 고정값으로 쓰지 않고 시작할 때 찾아서 `<JDK>`·`<idea64.exe>` 로 쓴다.
 
 | 항목 | 값 |
 |---|---|
 | 브라우저 | Claude in Chrome (`mcp__claude-in-chrome__*`). 도구가 지연 로드 상태면 `tabs_context_mcp, navigate, get_page_text, computer, tabs_close_mcp` 를 ToolSearch 한 번으로 로드 |
 | 프로젝트 폴더 | `C:/Users/sgosp/IdeaProjects/<프로젝트명>` |
 | 템플릿 프로젝트 | `C:/Users/sgosp/IdeaProjects/Tdd` (Gradle Kotlin DSL + 래퍼, JUnit 6 + AssertJ) |
-| JDK | `C:/Users/sgosp/.jdks/ms-25.0.4.1` (`java` 가 PATH 에 없음 → `JAVA_HOME` 지정) |
-| IntelliJ | `C:/Program Files/JetBrains/IntelliJ IDEA 2026.2.3/bin/idea64.exe` |
+| JDK `<JDK>` | `ls -d C:/Users/sgosp/.jdks/*/ \| sort -V \| tail -1` — 가장 높은 버전 (`java` 가 PATH 에 없음 → `JAVA_HOME` 지정) |
+| IntelliJ `<idea64.exe>` | `ls -d "C:/Program Files/JetBrains/IntelliJ IDEA"*/bin/idea64.exe \| sort -V \| tail -1` — 가장 높은 버전 |
+
+찾지 못하면 사용자에게 경로를 묻는다.
 
 ## D1 — 과제 페이지 읽기
 
@@ -46,7 +50,7 @@
 
 1. 테스트 실행 (빌드 출력은 길므로 ctx_execute 로 요약만 본다):
    ```bash
-   cd C:/Users/sgosp/IdeaProjects/<프로젝트명> && JAVA_HOME=C:/Users/sgosp/.jdks/ms-25.0.4.1 ./gradlew test --console=plain
+   cd C:/Users/sgosp/IdeaProjects/<프로젝트명> && JAVA_HOME=<JDK> ./gradlew test --console=plain
    ```
    결과는 `build/test-results/test/TEST-*.xml` 의 `tests`·`failures`·`errors` 로 확인한다.
 2. 실패하면 원인을 고치고 다시 실행한다. **테스트 파일은 고치지 않는다.** 5번 넘게 실패하면 멈추고 현재 상태를 사용자에게 알린다.
@@ -60,17 +64,17 @@
 3. **켜져 있으면**: 스크래치패드에 경로를 **하드코딩한** `.cmd` 를 만들고 explorer 로 실행 (샌드박스 해제 필요):
    ```
    @echo off
-   start "" "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.3\bin\idea64.exe" "C:\Users\sgosp\IdeaProjects\<프로젝트명>"
+   start "" "<idea64.exe 의 Windows 경로>" "C:\Users\sgosp\IdeaProjects\<프로젝트명>"
    ```
    `Start-Process explorer.exe '"<그 .cmd 경로>"'` — `%~1` 같은 인자는 쓰지 않는다 (explorer 는 인자를 넘기지 않음).
 4. 사용자에게 IntelliJ 창이 열렸는지, Gradle 동기화 후 테스트가 초록인지 확인해 달라고 한 줄로 부탁한다.
 
 ## D6 — 학습 계획으로 이어가기
 
-1. A 흐름의 **A1(진도 확인) → A2 → A3** 를 수행한다. 주제는 보통 기존 주제(예: Java)이고, 별칭으로 확인한다.
+1. [flows/plan.md](plan.md) 를 Read 하고 **A1(진도 확인) → A2 → A3** 를 수행한다. 주제는 보통 기존 주제(예: Java)이고, 별칭으로 확인한다.
 2. **A4 는 건너뛴다** — 자료는 과제 페이지 + 방금 만든 프로젝트.
-3. **A6 학습 순서 추천**은 테스트 묶음 단위로 단계를 나누고, 각 단계는 "완성 코드의 어느 메서드를 읽는가"로 쓴다. 마지막 직전 단계는 학습자가 핵심 부분을 10분 동안 직접 짜기, 마지막 단계는 제출 (마감일 표시).
+3. **A6 학습 순서 추천**은 테스트 묶음 단위로 단계를 나누고, 각 단계는 "완성 코드의 어느 메서드를 읽는가"로 쓴다. 마지막 직전 단계는 학습자가 핵심 부분을 10분 동안 직접 짜기 ([flows/session.md](session.md) E6 — `TODO(human)` 연습 브랜치), 마지막 단계는 제출 (마감일 표시).
 4. `진행 중 계획`의 자료 줄에 과제 링크와 프로젝트 경로를 함께 적는다:
    `- 자료: <과제명> (<링크>) — 코드: C:/Users/sgosp/IdeaProjects/<프로젝트명> — 마감 <날짜>`
 5. 출력 맨 위에 과제 요약(D1)과 검증 결과(테스트 n/n 통과, 체크리스트 ✅ 개수)를 붙인다.
-6. 끝나면 [진도 저장].
+6. 끝나면 SKILL.md [진도 저장].
