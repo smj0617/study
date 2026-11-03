@@ -14,7 +14,8 @@
 
 ## 진행 중 계획
 - 자료: 명언 앱 ⑥ 검색·페이징 (https://classroom.codemit.kr/classes/6/problems/31/submit) — 코드: C:/Users/sgosp/IdeaProjects/p31-wise-saying-search — 마감 2026-11-05 23:59
-- 진행: 0/4단계 (하향식: 완성품 동작 → 진입점 → 학습자가 궁금한 곳만 내려감. Claude 는 메서드 순서를 정하지 않음)
+- 방식: 하향식 — 완성품 동작 → 진입점 → 학습자가 궁금한 곳만 내려감. Claude 는 메서드 순서를 정하지 않음
+- 진행: 0/4단계
 1. [ ] 완성품 먼저 — 학습자가 IntelliJ 에서 Main 을 실행해 `목록`·`목록?page=2`·`목록?keywordType=content&keyword=1` 을 쳐 보고, 테스트 17개(t10~t15 검색·페이징)를 돌려 결과를 봄
 2. [ ] 진입점에서 내려가기 — `App.run` 의 `case "목록"` 부터 학습자가 궁금한 곳까지 내려가며 질문 (계층 역할 오개념은 이 단계 끝 놓친 것 확인에서 다시 물음)
 3. [ ] 직접 짜기 10분 — practice 브랜치에서 `WiseSayingController.actionList` 본문을 비우고 학습자가 채우기 (TODO(human), t10~t15)
