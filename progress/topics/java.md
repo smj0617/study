@@ -9,11 +9,17 @@
 ## 영역별 실력
 - 자바 문법 (묶음: 기본 문법, 문자열 처리, 입출력): 미진단
 - 재귀·알고리즘 (묶음: 재귀, Calc 구조): 1 초보자 (진단 2026-11-03)
-- 설계·테스트 (묶음: 계층 구조, 테스트(JUnit)): 미진단
+- 설계·테스트 (묶음: 계층 구조, 테스트(JUnit)): 1 초보자 (진단 2026-11-03)
 - 코드 읽기: 1 초보자 (진단 2026-11-03)
 
 ## 진행 중 계획
-- 없음 (최근 중단: TDD 다항식 계산기 ② 우선순위·괄호, 2026-11-03 — 학습자 결정으로 1단계 도중 마침: 알고리즘은 실무에서 AI 에 맡길 것이라 한 줄씩 추적보다 구조 보기가 더 중요하다고 함. 코드: C:/Users/sgosp/IdeaProjects/p29-calc-priority-2)
+- 자료: 명언 앱 ⑥ 검색·페이징 (https://classroom.codemit.kr/classes/6/problems/31/submit) — 코드: C:/Users/sgosp/IdeaProjects/p31-wise-saying-search — 마감 2026-11-05 23:59
+- 진행: 0/5단계
+1. [ ] t10·t11 검색 — 진입점 `App.run` → `WiseSayingController.actionList(rq)` → `WiseSayingService.findForList` → `WiseSayingRepository.findForList`·`matches`, 명령 문자열을 자르는 `Rq` — 집중 (오개념: 계층 역할)
+2. [ ] t12·t13 페이징 — `Page` record, Repository 의 skip·limit, Controller 의 `printPageMenu` — 집중
+3. [ ] t12~t15 vs CRUD 테스트 시작 상태 — `App` 생성자 두 개(샘플 유무), `AppTestRunner.run` vs `runWithSampleData` — 집중 (오개념: 조립 순서, final 역할)
+4. [ ] 직접 짜기 10분 — practice 브랜치에서 `WiseSayingController.actionList` 본문을 비우고 학습자가 채우기 (TODO(human), t10~t15)
+5. [ ] 제출 — 마감 2026-11-05 23:59
 
 ## 압축됨
 
@@ -24,6 +30,7 @@
 
 ## 학습 중
 - static 상태와 테스트마다 초기화 (같은 JVM 에서 static 값이 테스트 사이에 남음 → new App 마다 저장소 새로 만들기) [묶음: 테스트(JUnit) · 개념 · 표면 · 계수 2.5 · 다음 2026-11-05] — 오개념[final 역할]: 학습자가 final 이 있어야 테스트마다 저장소가 새로 시작된다고 착각
+- 계층별 역할 (Controller 는 입출력, Service 는 비즈니스 로직, Repository 는 데이터 저장·조회 — 명령 문자열 자르기는 Rq) [묶음: 계층 구조 · 개념 · 깊이 미판정 · 확신 오류(0/2) · 계수 1.96 · 다음 2026-11-06] — 오개념[계층 역할]: 학습자가 Service 가 요청 문자열을 자르고 사용자에게 보일 출력을 맡는다고 확신하고 답함 (실제: 출력은 Controller 만, 문자열 자르기는 Rq, Service 는 입출력 없음) / Repository 역할은 맞힘
 - 생성자로 넘겨주기 (의존성 주입) [묶음: 계층 구조 · 개념 · 표면 · 선수: 참조 · 계수 2.5 · 다음 2026-11-05] — 오개념[조립 순서]: 학습자가 만드는 순서를 요청 흐름(컨트롤러 → 서비스 → 저장소)과 같다고 착각 (실제는 저장소 → 서비스 → 컨트롤러) / 설명 누락: 계층 구조가 지켜지는 점, App 마다 저장소가 따로인 점
 - System.setOut 출력 가로채기·되돌리기 [묶음: 입출력 · 절차 · 표면 · 선수: 참조 · 계수 2.5 · 다음 2026-11-05] — 설명 누락: 원래 펜(originalOut) 보관, setOut 으로 공책용 펜 바꿔 꽂기, 끝날 때 원래 펜으로 되돌리기
 - finally 와 "준비 → try → 정리" 배치 [묶음: 기본 문법 · 개념 · 표면 · 확신 오류(0/2) · 계수 2.5 · 다음 2026-11-05] — 오개념[컴파일·실행 구분]: 학습자가 실행 중 상태 문제(펜이 안 꽂혀 있음)를 컴파일 에러로 착각 / 설명 누락: finally 는 정상 종료·return 에도 실행됨, finally 는 예외 처리가 아니라 정리, 준비를 try 앞에 두는 이유 (실패하면 finally 가 남의 가로채기까지 풀어 버림)
